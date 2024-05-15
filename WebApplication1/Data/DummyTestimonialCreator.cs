@@ -2,23 +2,25 @@
 
 namespace GoodWeb;
 
-public class DbInitializer
+public class DummyTestimonialCreator
 {
     public static void Initialize(TestimonialsContext context)
     {
         if (context.Authors.Any())
             return;
 
-        Author[] authors = [
+        var authors = new List<Author>
+        {
             new Author {Name = "James Fernando", Position = "Manager of Racer", Photo="uploads/testi_01.png"},
             new Author {Name = "Jacques Philips", Position= "Designer", Photo="uploads/testi_02.png"},
             new Author {Name = "Venanda Mercy", Position="Newyork City", Photo="uploads/testi_03.png"},
-        ];
+        };
 
         context.Authors.AddRange(authors);
         context.SaveChanges();
 
-        Testimonial[] testimonials = [
+        var testimonials = new List<Testimonial>
+        {
             new Testimonial {
                 Quote = "Wonderful Support!",
                 Text="They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.",
@@ -34,7 +36,7 @@ public class DbInitializer
                 Text="The master-builder of human happiness no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure.",
                 Author=authors[2]
             }
-        ];
+        };
 
         context.Testimonials.AddRange(testimonials);
         context.SaveChanges();

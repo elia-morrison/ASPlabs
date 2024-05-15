@@ -38,7 +38,7 @@ public class Program
             var services = scope.ServiceProvider;
             var context = services.GetRequiredService<TestimonialsContext>();
             context.Database.EnsureCreated();
-            DbInitializer.Initialize(context);
+            DummyTestimonialCreator.Initialize(context);
         }
 
         app.UseHttpsRedirection();
