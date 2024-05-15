@@ -1,0 +1,84 @@
+﻿@page
+@model MyApp.Namespace.TestimonialsModel
+@{
+    ViewData["Title"] = "Testimonials";
+    ViewData["navbar-active"] = "testimonials";
+    ViewData["testimonials"] = "Our Clients";
+}
+
+<partial name="_Banner" />
+
+<div id="test-box" class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>Testimonials</h3>
+            <p class="lead">We thanks for all our awesome testimonials! There are hundreds of our happy customers!
+                <br>Let's see what others say about GoodWEB Solutions website template!
+            </p>
+        </div><!-- end title -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="testi-carousel owl-carousel owl-theme">
+                    @foreach (var testimonial in Model.Testimonials)
+                    {
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> @testimonial.Quote</h3>
+                                <p class="lead">@testimonial.Text</p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="@testimonial.Author?.Photo" alt="" class="img-responsive alignleft">
+                                <h4>@testimonial.Author?.Name <small>- @testimonial.Author?.Position</small></h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+                    }
+                </div><!-- end carousel -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+
+    </div><!-- end container -->
+</div><!-- end section -->
+
+<partial name="_Testimonials" />
+
+<div id="contact" class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>Give us your feedback</h3>
+        </div><!-- end title -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="contact_form">
+                    <div>@Model.Form?.Status</div>
+                    <form method="post" class="row" action="/Testimonials" asp-antiforgery="true">
+                        <fieldset class="row-fluid">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" asp-for="Form.Name" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" asp-for="Form.Position" class="form-control"
+                                    placeholder="Currrent position or occupation">
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" asp-for="Form.Title" class="form-control" placeholder="Title">
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <textarea class="form-control" asp-for="Form.Text" rows="6"
+                                    placeholder="Give us more details.."></textarea>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                                <button type="submit" value="SEND"
+                                    class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div><!-- end col -->
+        </div><!-- end row -->
+
+    </div><!-- end container -->
+</div><!-- end section -->
