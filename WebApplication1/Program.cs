@@ -9,7 +9,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddRazorPages();
-        builder.Services.AddTransient<PortfolioItemsService>();
+        builder.Services.AddTransient<PortfolioService>();
         builder.Services.AddDbContext<TestimonialsContext>(options =>
             options.UseSqlite(
                 builder.Configuration.GetConnectionString(

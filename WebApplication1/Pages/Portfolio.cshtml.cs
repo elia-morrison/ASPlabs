@@ -7,9 +7,9 @@ namespace MyApp.Namespace
 {
     public class PortfolioModel : PageModel
     {
-        public PortfolioItemsService portfolioItemsService;
+        public PortfolioService portfolioItemsService;
         public IEnumerable<PortfolioItem> PortfolioItems { get; private set; }
-        public PortfolioModel(PortfolioItemsService itemsService)
+        public PortfolioModel(PortfolioService itemsService)
         {
             portfolioItemsService = itemsService;
             PortfolioItems = [];
